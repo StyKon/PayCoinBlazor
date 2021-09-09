@@ -1,0 +1,98 @@
+﻿@page "/community/coupon/add"
+@page "/community/coupon/edit/{Id}"
+<div class="card card-box">
+    <div class="card-head">
+        <header>Coupon Form</header>
+    </div>
+    <div class="card-body" id="bar-parent2">
+        <EditForm Model="@coupon" class="form-horizontal" OnValidSubmit="@HandleValidRequest" OnInvalidSubmit="HandleInvalidRequest">
+            <div class="form-body">
+                <div class="form-group">
+                    <label for="simpleFormEmail">Code</label>
+                    <InputText class="form-control" placeholder="Enter Code" @bind-Value="@coupon.Code" id="Code"></InputText>
+                </div>
+                <div class="form-group">
+                    <label for="simpleFormEmail">Value</label>
+                    <InputNumber class="form-control" placeholder="Enter Value" @bind-Value="@coupon.Value" id="Value"></InputNumber>
+
+                </div>
+                <div class="form-group">
+                    <label for="simpleFormEmail">Date Validation</label>
+                    <InputText class="form-control" placeholder="Enter DateValidation" @bind-Value="@coupon.DateValidation" id="DateValidation"></InputText>
+                </div>
+                <div class="form-group">
+                    <label for="simpleFormEmail">Date Expired</label>
+                    <InputText class="form-control" placeholder="Enter DateExpired" @bind-Value="@coupon.DateExpired" id="DateExpired"></InputText>
+                </div>
+                <div class="form-group">
+                    <label for="simpleFormEmail">Type</label>
+                    <InputSelect class="form-control" placeholder="Enter Type" @bind-Value="@coupon.Type" id="Type">
+                        <option value="fixed">Fixed</option>
+                        <option value="percent">Percent</option>
+                    </InputSelect>
+                </div>
+                <div class="form-group">
+                    <label for="simpleFormEmail">Nature</label>
+                    <InputSelect class="form-control" placeholder="Enter Nature" @bind-Value="@coupon.Nature" id="Nature">
+                        <option value="real">Real</option>
+                        <option value="virtual">Virtual</option>
+                    </InputSelect>
+                </div>
+                <div class="form-group">
+                    <label for="simpleFormEmail">Validation</label>
+                    <InputSelect class="form-control" placeholder="Enter Validation" @bind-Value="@coupon.Validation" id="Validation">
+                        <option value="valid">Valid</option>
+                        <option value="invalid">InValid</option>
+                    </InputSelect>
+                </div>
+                <div class="form-group">
+                    <label for="simpleFormEmail">Provider</label>
+                    <select class="form-control" placeholder="Enter Provider" @bind="@coupon.ProviderId" id="ProviderId">
+                        <option value="">Chose One Provider</option>
+
+                        @foreach (var provider in providers)
+                        {
+            @if (provider.ProviderId == coupon.ProviderId)
+            {
+            <option value="@provider.ProviderId" selected>@provider.CompanyName</option> }
+                                else
+                                {
+            <option value="@provider.ProviderId">@provider.CompanyName</option>}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="simpleFormEmail">Community</label>
+                    <select class="form-control" placeholder="Enter Community" @bind="@coupon.CommunityId" id="CommunityId">
+                        <option value="">Chose One Community</option>
+
+                        @foreach (var community in communitys)
+                        {
+            @if (community.CommunityId == coupon.CommunityId)
+            {
+            <option value="@community.CommunityId" selected>@community.Phone</option> }
+                                else
+                                {
+            <option value="@community.CommunityId">@community.Phone</option>}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="simpleFormEmail">Status</label>
+                    <InputSelect class="form-control" placeholder="Enter Status" @bind-Value="@coupon.Status" id="Status">
+                        <option value="active">Active</option>
+                        <option value="inactive">InActive</option>
+                    </InputSelect>
+                </div>
+                <div class="form-group">
+                    <div class="offset-md-5">
+                        <button type="submit" class="btn btn-info">Save</button>
+                        <button type="button" @onclick="@goToOverview" class="btn btn-default">Back</button>
+                    </div>
+                </div>
+
+                <label>@Message</label>
+            </div>
+        </EditForm>
+    </div>
+
+
+</div>

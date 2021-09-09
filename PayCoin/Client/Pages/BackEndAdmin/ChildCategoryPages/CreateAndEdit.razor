@@ -1,0 +1,60 @@
+﻿@page "/admin/childcategory/add"
+@page "/admin/childcategory/edit/{Id}"
+<div class="card card-box">
+    <div class="card-head">
+        <header>ChildCategory Form</header>
+    </div>
+    <div class="card-body" id="bar-parent2">
+        <EditForm Model="@childcategory" class="form-horizontal" OnValidSubmit="@HandleValidRequest" OnInvalidSubmit="HandleInvalidRequest">
+            <div class="form-body">
+                <div class="form-group">
+                    <label for="simpleFormEmail">Title</label>
+                    <InputText class="form-control" placeholder="Enter Title" @bind-Value="@childcategory.Title" id="Title"></InputText>
+                </div>
+                <div class="form-group">
+                    <label for="simpleFormEmail">Summary</label>
+                    <InputTextArea class="form-control" placeholder="Enter Summary" @bind-Value="@childcategory.Summary" id="Summary"></InputTextArea>
+
+                </div>
+                <div class="form-group">
+                    <label for="simpleFormEmail">Photo</label>
+                    <InputText class="form-control" placeholder="Enter Photo" @bind-Value="@childcategory.Photo" id="Photo"></InputText>
+                </div>
+                <div class="form-group">
+                    <label for="simpleFormEmail">Category</label>
+                    <select class="form-control" placeholder="Enter Category" @bind="@childcategory.CategoryId" id="CategoryId">
+                        <option value="">Chose One Category</option>
+
+                        @foreach (var category in categorys)
+                        {
+                    @if (childcategory.CategoryId == category.CategoryId)
+                    {
+                        <option value="@category.CategoryId" selected>@category.Title</option>
+ }
+                    else
+                    {
+                    <option value="@category.CategoryId">@category.Title</option>
+}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="simpleFormEmail">Status</label>
+                    <InputSelect class="form-control" placeholder="Enter Status" @bind-Value="@childcategory.Status" id="Status">
+                        <option value="active">Active</option>
+                        <option value="inactive">InActive</option>
+                    </InputSelect>
+                </div>
+                <div class="form-group">
+                    <div class="offset-md-5">
+                        <button type="submit" class="btn btn-info">Save</button>
+                        <button type="button" @onclick="@goToOverview" class="btn btn-default">Back</button>
+                    </div>
+                </div>
+
+                <label>@Message</label>
+            </div>
+        </EditForm>
+    </div>
+
+
+</div>

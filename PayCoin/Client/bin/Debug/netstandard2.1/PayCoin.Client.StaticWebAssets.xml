@@ -1,0 +1,4 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="/" Path="C:\Users\khali\source\repos\PayCoin\PayCoin\Client\bin\Debug\netstandard2.1\wwwroot\" />
+  <ContentRoot BasePath="_content/Radzen.Blazor" Path="C:\Users\khali\.nuget\packages\radzen.blazor\3.8.2\build\..\staticwebassets\" />
+</StaticWebAssets>

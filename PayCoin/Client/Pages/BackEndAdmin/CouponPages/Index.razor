@@ -1,0 +1,182 @@
+@page "/admin/coupon"
+    <div class="page-bar">
+        <div class="page-title-breadcrumb">
+            <div class=" pull-left">
+                <div class="page-title">Coupon</div>
+            </div>
+            <ol class="breadcrumb page-breadcrumb pull-right">
+                <li>
+                    <i class="fa fa-home"></i>&nbsp;<a class="parent-item"
+                                                       href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                </li>
+                <li>
+                    <a class="parent-item" href="#">Apps</a>&nbsp;<i class="fa fa-angle-right"></i>
+                </li>
+                <li class="active">Coupon List</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box">
+                <div class="card-head">
+                    <header>Coupon List</header>
+                </div>
+                <div class="card-body ">
+                    <div class="state-overview">
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="overview-panel purple">
+                                    <div class="symbol">
+                                        <i class="fa fa-ticket usr-clr"></i>
+                                    </div>
+                                    <div class="value white">
+                                        <p class="sbold addr-font-h1" data-counter="counterup"
+                                           data-value="1576">0</p>
+                                        <p>Total Tickets</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="overview-panel deepPink-bgcolor">
+                                    <div class="symbol">
+                                        <i class="fa fa-reply"></i>
+                                    </div>
+                                    <div class="value white">
+                                        <p class="sbold addr-font-h1" data-counter="counterup"
+                                           data-value="956">0</p>
+                                        <p>Respond</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="overview-panel orange">
+                                    <div class="symbol">
+                                        <i class="fa fa-handshake-o"></i>
+                                    </div>
+                                    <div class="value white">
+                                        <p class="sbold addr-font-h1" data-counter="counterup"
+                                           data-value="856">0</p>
+                                        <p>Resolved</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="overview-panel blue-bgcolor">
+                                    <div class="symbol">
+                                        <i class="fa fa-clock-o"></i>
+                                    </div>
+                                    <div class="value white">
+                                        <p class="sbold addr-font-h1" data-counter="counterup"
+                                           data-value="134">0</p>
+                                        <p>Pending</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-b-20">
+                        <div class="col-md-6 col-sm-6 col-6">
+                            <div class="btn-group">
+                                <button @onclick="@goToAddPage" id="addRow1" class="btn btn-info">
+                                    Add New <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-6">
+                            <div class="btn-group pull-right">
+                                <button class="btn deepPink-bgcolor  btn-outline dropdown-toggle"
+                                        data-toggle="dropdown">
+                                    Tools
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-print"></i> Print
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-file-pdf-o"></i> Save as PDF
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-file-excel-o"></i> Export to Excel
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>  @if (coupons == null)
+                    {
+                        <p>Loading...</p> }
+                    else
+                    {
+                        <table class="table table-hover table-checkable order-column full-width"
+                               id="example4">
+                            <thead>
+                                <tr>
+                                    <th class="center">GetQrCode</th>
+                                    <th class="center">Code</th>
+                                    <th class="center">Value</th>
+                                    <th class="center">Date Validation</th>
+                                    <th class="center">Date Expired</th>
+                                    <th class="center">Type</th>
+                                    <th class="center">Nature</th>
+                                    <th class="center">Validation</th>
+                                    <th class="center">Status</th>
+                                    <th class="center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var coupon in coupons)
+                                {
+                                    <tr>
+                                        <td class="center">
+                                            <i @onclick="@(()=> GenerateQRCode(@coupon.Code))" class="fa fa-print"></i>
+                                        </td>
+                                        <td class="center">@coupon.Code</td>
+                                        <td class="center">@coupon.Value</td>
+                                        <td class="center">@coupon.DateValidation</td>
+                                        <td class="center">@coupon.DateExpired</td>
+                                        <td class="center">@coupon.Type</td>
+                                        <td class="center">@coupon.Nature</td>
+                                        <td class="center">
+                                            @if (coupon.Validation == "valid")
+                                            {
+                                                <span class="label label-sm box-shadow-1 label-success">Valid</span>}
+                                            else
+                                            {
+                                                <span class="label label-sm box-shadow-1 label-warning">InValid</span>
+                                            }
+                                        </td>
+                                        <td class="center">
+                                            @if (coupon.Status == "active")
+                                            {
+                                                <span class="label label-sm box-shadow-1 label-success">Active</span>}
+                                            else
+                                            {
+                                                <span class="label label-sm box-shadow-1 label-warning">InActive</span>
+                                            }
+                                        </td>
+                                        <td class="center">
+                                            <a href="@($"admin/coupon/edit/{coupon.CouponId}")" class="btn btn-tbl-edit btn-xs">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                            <button @onclick="() => DeleteItem(coupon.CouponId)" class="btn btn-tbl-delete btn-xs">
+                                                <i class="fa fa-trash-o "></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+}
+                            </tbody>
+                        </table>}
+                </div>
+                <div id="qrBarcodeFonts">@((MarkupString)QRCodeStr)</div>
+
+
+            </div>
+        </div>
+    </div>

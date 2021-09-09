@@ -1,0 +1,9 @@
+C:\Users\khali\source\repos\PayCoin\PayCoin\Shared\bin\Debug\netstandard2.1\PayCoin.Shared.deps.json
+C:\Users\khali\source\repos\PayCoin\PayCoin\Shared\bin\Debug\netstandard2.1\PayCoin.Shared.dll
+C:\Users\khali\source\repos\PayCoin\PayCoin\Shared\bin\Debug\netstandard2.1\PayCoin.Shared.pdb
+C:\Users\khali\source\repos\PayCoin\PayCoin\Shared\obj\Debug\netstandard2.1\PayCoin.Shared.csproj.AssemblyReference.cache
+C:\Users\khali\source\repos\PayCoin\PayCoin\Shared\obj\Debug\netstandard2.1\PayCoin.Shared.AssemblyInfoInputs.cache
+C:\Users\khali\source\repos\PayCoin\PayCoin\Shared\obj\Debug\netstandard2.1\PayCoin.Shared.AssemblyInfo.cs
+C:\Users\khali\source\repos\PayCoin\PayCoin\Shared\obj\Debug\netstandard2.1\PayCoin.Shared.csproj.CoreCompileInputs.cache
+C:\Users\khali\source\repos\PayCoin\PayCoin\Shared\obj\Debug\netstandard2.1\PayCoin.Shared.dll
+C:\Users\khali\source\repos\PayCoin\PayCoin\Shared\obj\Debug\netstandard2.1\PayCoin.Shared.pdb
